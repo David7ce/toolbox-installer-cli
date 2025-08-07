@@ -1,19 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="toolbox_installer",
-    version="1.0.0",
-    description="Multi-platform interactive package installer",
-    author="David7ce",
+    name="toolbox_installer_cli",
+    version="0.1",
     packages=find_packages(),
+    include_package_data=True,
     install_requires=[
         "inquirer",
+        "requests",
     ],
     entry_points={
-        "console_scripts": [
-            "toolbox=cli_full:main"
-        ]
+        'console_scripts': [
+            'toolbox=toolbox_installer.cli:main',
+        ],
     },
-    include_package_data=True,
-    package_data={"": ["pkgs/packages-info.json"]}
 )
