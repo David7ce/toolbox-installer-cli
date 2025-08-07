@@ -4,14 +4,14 @@
 
 ## ✅ Features
 
-✅ Detects your OS and native package manager (apt, pacman, dnf, winget, brew, etc.)
-✅ Installs only via your native manager by default
-✅ If package is missing → auto-installs from Flatpak
-✅ Optional: --prefer flatpak|brew|nix to override behavior
-✅ Interactive checkbox UI for package selection
-✅ Support for import/export of package lists
-✅ Dry-run mode with --no-execute to preview commands
-✅ Designed for Linux, macOS, Windows, and BSD
+- [x] Detects your OS and native package manager (apt, pacman, dnf, winget, brew, etc.)
+- [x] Installs only via your native manager by default
+- [x] If package is missing → auto-installs from Flatpak
+- [x] Optional: --prefer flatpak|brew|nix to override behavior
+- [x] Interactive checkbox UI for package selection
+- [x] Support for import/export of package lists
+- [x] Dry-run mode with --no-execute to preview commands
+- [x] Designed for Linux, macOS, Windows, and BSD
 
 
 ## 🛠 Install
