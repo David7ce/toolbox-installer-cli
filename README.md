@@ -24,5 +24,4 @@ toolbox --file path/to/packages-info.json
 ## Requirements
 
 - Python 3.7+
-- `pip install
--  inquirer`
+- `pip install inquirer`
