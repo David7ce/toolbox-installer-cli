@@ -18,39 +18,38 @@
 
 Clone the repo and install locally:
 
+```sh
 git clone https://github.com/David7ce/toolbox-installer-cli.git
 cd toolbox-installer-cli
 pip install .
+```
 
 > This will make the toolbox command globally available.
 
 
 ## 🚀 Usage
 
-toolbox [OPTIONS]
-
-Interactive CLI (default)
-
+```sh
+## Presents you with a checkbox list of tools to install
 toolbox
 
-Presents you with a checkbox list of tools to install
+## Installs with native package manager, falling back to Flatpak
+toolbox [OPTIONS]
+```
 
-Installs with native package manager, falling back to Flatpak
+🔧 Options
 
-
-## 🔧 Options
-
-Flag	Description
-
-`--prefer flatpak	brew
+```
+--prefer flatpak brew
 --import FILE	Import a list of package names to install from JSON
 --export FILE	Export selected packages to JSON
 --file FILE	Use a custom JSON file for package mappings
 --no-execute	Dry-run mode — print install commands, don't run them
-
+```
 
 ### 📁 Example packages-info.json Format
 
+```json
 {
   "vlc": {
     "apt": "vlc",
@@ -63,6 +62,7 @@ Flag	Description
     "category": "Media"
   }
 }
+```
 
 By default, the CLI fetches this from:
 
