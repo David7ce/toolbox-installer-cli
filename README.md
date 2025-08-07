@@ -1,27 +1,134 @@
-# toolbox-installer-cli
+# 📦 Toolbox Installer CLI
 
-A cross-platform interactive package installer.
+> Cross-platform, cross-distro package installer that prioritizes your native system manager — with intelligent fallback to Flatpak, Brew, or Nix.
 
-## Usage
+## ✅ Features
 
-```sh
-# Interactively select and install
+✅ Detects your OS and native package manager (apt, pacman, dnf, winget, brew, etc.)
+
+✅ Installs only via your native manager by default
+
+✅ If package is missing → auto-installs from Flatpak
+
+✅ Optional: --prefer flatpak|brew|nix to override behavior
+
+✅ Interactive checkbox UI for package selection
+
+✅ Support for import/export of package lists
+
+✅ Dry-run mode with --no-execute to preview commands
+
+✅ Designed for Linux, macOS, Windows, and BSD
+
+
+## 🛠 Install
+
+Clone the repo and install locally:
+
+git clone https://github.com/David7ce/toolbox-installer-cli.git
+cd toolbox-installer-cli
+pip install .
+
+> This will make the toolbox command globally available.
+
+
+## 🚀 Usage
+
+toolbox [OPTIONS]
+
+Interactive CLI (default)
+
 toolbox
 
-# Only show commands, don't execute
+Presents you with a checkbox list of tools to install
+
+Installs with native package manager, falling back to Flatpak
+
+
+## 🔧 Options
+
+Flag	Description
+
+`--prefer flatpak	brew
+--import FILE	Import a list of package names to install from JSON
+--export FILE	Export selected packages to JSON
+--file FILE	Use a custom JSON file for package mappings
+--no-execute	Dry-run mode — print install commands, don't run them
+
+
+### 📁 Example packages-info.json Format
+
+{
+  "vlc": {
+    "apt": "vlc",
+    "dnf": "vlc",
+    "pacman": "vlc",
+    "flatpak": "org.videolan.VLC",
+    "brew": "vlc",
+    "winget": "VideoLAN.VLC",
+    "nix": "vlc",
+    "category": "Media"
+  }
+}
+
+By default, the CLI fetches this from:
+
+https://raw.githubusercontent.com/David7ce/toolbox-installer-cli/refs/heads/main/pkgs/packages-info.json
+
+You can override it with --file.
+
+
+### 🔄 Example Workflows
+
+Install with preferred fallback:
+
+toolbox --prefer flatpak
+
+Export selected tools to JSON:
+
+toolbox --export mytools.json
+
+Import and install from JSON:
+
+toolbox --import mytools.json
+
+Simulate actions (dry-run):
+
 toolbox --no-execute
 
-# Export your selection for later reuse
-toolbox --export my-selection.json
 
-# Import a previous selection
-toolbox --import my-selection.json
+---
 
-# Specify a different package list
-toolbox --file path/to/packages-info.json
+## ✅ Supported Package Managers
+
+OS	Native Manager
+
+Ubuntu/Debian	apt
+Arch/Manjaro	pacman
+Fedora/RHEL	dnf
+Gentoo	emerge
+Void Linux	xbps-install
+macOS	brew
+Windows	winget
+FreeBSD	pkg
+Universal	flatpak, nix, brew
+
+---
+
+## 🧪 Development
+
+To run locally:
+
+```python
+python -m toolbox_installer.cli --no-execute
 ```
 
-## Requirements
+---
 
-- Python 3.7+
-- `pip install inquirer`
+### ⚠️ Notes
+
+sudo is used automatically for Linux/Unix systems — make sure you trust the commands being run.
+
+Package names vary between distros — ensure packages-info.json is complete and accurate.
+
+Flatpak support assumes Flatpak is installed and set up.
